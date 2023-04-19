@@ -1,16 +1,15 @@
-import random , string
 class HashTable:
     def __init__(self, size):
         self.size = size
         self.keys = [None] * size
         self.values = [None] * size
-    
+
     def hash_function(self, key):
         count = 0
         for _ in key:
             count += 1
         hash_value = count % self.size
-        
+
         return hash_value
 
     def hash_insert(self, key, value):
@@ -25,9 +24,9 @@ class HashTable:
         elif isinstance(self.keys[index], list):
             self.keys[index].append(key)
             self.values[index].append(value)
-        
+
         else:
-           
+
             self.keys[index], self.values[index] = [self.keys[index]], [self.values[index]]
             self.keys[index].append(key)
             self.values[index].append(value)
@@ -65,6 +64,34 @@ class HashTable:
         print(f"{key} not found")
         return comparisons
 
+    def hash_delete(self, key):
+        index = self.hash_function(key)
+
+        if self.keys[index] is None:
+            print(f"{key} not found")
+            return
+
+        if isinstance(self.keys[index], list):
+            try:
+                value_index = self.keys[index].index(key)
+            except ValueError:
+                print(f"{key} not found")
+                return
+
+            self.keys[index].pop(value_index)
+            self.values[index].pop(value_index)
+
+            if len(self.keys[index]) == 0:
+                self.keys[index] = None
+                self.values[index] = None
+
+        elif self.keys[index] == key:
+            self.keys[index] = None
+            self.values[index] = None
+
+        else:
+            print(f"{key} not found")
+            return
 
 
 
