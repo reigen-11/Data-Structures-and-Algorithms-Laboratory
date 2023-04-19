@@ -17,6 +17,7 @@ Second Year of Computer Engineering (2019 Course)  217532  :  Data Structures an
 
 4.  To create ADT that implement the "set" concept.
     
+    
     a.Add (newElement) -Place a value into the set
     b.Remove (element) Remove the value
     c. Contains (element) Return true if element is in collection
