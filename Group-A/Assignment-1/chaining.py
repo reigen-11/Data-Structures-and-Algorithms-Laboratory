@@ -68,21 +68,4 @@ class HashTable:
 
 
 
-# n = int(input("size of the table : "))
-lalo = HashTable(10)
 
-for i in range(10):
-    
-    #& Yeah Biatch !!!
-    # name = ''.join(random.choices(string.ascii_uppercase, k=5)) 
-    # contact_no = random.randint(1000000000, 9999999999)
-
-    #~ To do manually shit contact numbers
-    name = input("Enter contact name : ")
-    contact_no = int(input(f"Enter Contact number of {name}"))
-
-    lalo.hash_insert(name,contact_no)
-
-
-
-lalo.print_table()
