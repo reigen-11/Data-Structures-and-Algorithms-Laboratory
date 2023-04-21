@@ -3,7 +3,7 @@ Second Year of Computer Engineering (2019 Course)  217532  :  Data Structures an
 
 ## Assignments
 1.  Consider telephone book database of N clients. Make use of a hash table implementation to quickly
-    look up client‘s telephone number. Make use of two collision handling techniques and compare
+    look up clients telephone number. Make use of two collision handling techniques and compare
     them using number of comparisons required to find a set of telephone numbers
 
 2.  Implement all the functions of a dictionary (ADT) using hashing and handle collisions using
