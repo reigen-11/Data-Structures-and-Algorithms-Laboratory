@@ -2,13 +2,13 @@ import random
 
 
 class Prims:
-    def __init__(self, vertices: list, weighted_edges: dict):
+#     def __init__(self, vertices: list, weighted_edges: dict):
 
-        self.vertices = vertices
-        self.weighted_edges = weighted_edges
+#         self.vertices = vertices
+#         self.weighted_edges = weighted_edges
 
     @staticmethod
-    def generating_spanning_tree(self, vertices: list, weighted_edges: dict):
+    def generating_spanning_tree(vertices: list, weighted_edges: dict):
 
         cutting_edges = {}
         visited = []
