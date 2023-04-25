@@ -2,10 +2,16 @@ import random
 
 
 class Prims:
+
     # def __init__(self, vertices: list, weighted_edges: dict):
     #
     #     self.vertices = vertices
     #     self.weighted_edges = weighted_edges
+#     def __init__(self, vertices: list, weighted_edges: dict):
+
+#         self.vertices = vertices
+#         self.weighted_edges = weighted_edges
+
 
     @staticmethod
     def generating_spanning_tree(vertices: list, weighted_edges: dict):
@@ -39,4 +45,5 @@ class Prims:
                 current_vertex = new_vertex
 
             else:
-                for edge, weight in 
+                current_vertex = random.choice(not_visited)
+
