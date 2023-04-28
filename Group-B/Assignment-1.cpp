@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include<queue>
 
 using namespace std;
 
@@ -34,18 +35,39 @@ void constructTree(Node* root) {
     }
 }
 
+// void printTree(Node* root) {
+//     if (root == NULL) {
+//         return;
+//     }
+
+//     cout << root->data << " ";
+
+//     for (int i = 0; i < root->children.size(); i++) {
+//         printTree(root->children[i]);
+//         // cout << "-->";
+//     }
+// }
+
 void printTree(Node* root) {
     if (root == NULL) {
         return;
     }
 
-    cout << root->data << " ";
+    queue<Node*> q;
+    q.push(root);
 
-    for (int i = 0; i < root->children.size(); i++) {
-        printTree(root->children[i]);
-        // cout << "-->";
+    while (!q.empty()) {
+        Node* current = q.front();
+        q.pop();
+
+        cout << current->data << " ";
+
+        for (int i = 0; i < current->children.size(); i++) {
+            q.push(current->children[i]);
+        }
     }
 }
+
 
 int main() {
     string rootData;
