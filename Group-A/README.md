@@ -1,7 +1,9 @@
 # Data-Structures-and-Algorithms-Laboratory
 Second Year of Computer Engineering (2019 Course)  217532  :  Data Structures and Algorithms Laboratory
 
-## Assignments
+## Group-A
+
+### Assignments
 1.  Consider telephone book database of N clients. Make use of a hash table implementation to quickly
     look up clients telephone number. Make use of two collision handling techniques and compare
     them using number of comparisons required to find a set of telephone numbers
