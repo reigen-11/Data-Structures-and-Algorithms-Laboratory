@@ -19,11 +19,18 @@ if __name__ == "__main__":
         rick.hash_insert(random_name, random_number)
         morty.hash_insert(random_name, random_number)
 
-# inserting one value manually to search and compare it
     name = input("Contact_name : ")
     number = int(input("Contact_number : "))
+
     rick.hash_insert(name, number)
     morty.hash_insert(name, number)
 
-    print(rick.hash_search(name))
-    print(morty.hash_search(name))
+    print(f"Hashtable of Linear Probing :- {rick.print_table()} \n\n")
+
+    print(f"Hashtable of Chaining :- {morty.print_table()} \n\n")
+
+    _name = input("Any contact you wanna search for : ")
+
+
+    print(rick.hash_search(_name))
+    print(morty.hash_search(_name))

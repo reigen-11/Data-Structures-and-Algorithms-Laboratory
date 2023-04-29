@@ -53,17 +53,16 @@ class HashTable:
                 # Search within a list of keys at the same index
                 for i in range(len(self.keys[index])):
                     if self.keys[index][i] == key:
-                        print(f"Found {key} with value {self.values[index][i]}")
-                        return comparisons
+                        print(f"Found {key} : {self.values[index][i]} with comparisons = {comparisons}")
+
                     comparisons += 1
             elif self.keys[index] == key:
-                print(f"Found {key} with value {self.values[index]}")
-                return comparisons
+                print(f"Found {key} : {self.values[index]} with comparisons {comparisons}")
+
             comparisons += 1
             index = (index + 1) % self.size
 
-        print(f"{key} not found")
-        return comparisons
+        return
 
 
 

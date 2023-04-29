@@ -58,14 +58,14 @@ class Linear_Probing:
 
     def hash_search(self, key):
         index = self.hash_function(key)
-        comparisons = 1
+        comparisons = 0
 
-        while self.keys[index] is not None:
-            if self.keys[index] == key:
-                print(f"Found {key} with value {self.values[index]}")
-                return comparisons
-            comparisons += 1
-            index = (index + 1) % self.size
+        if self.keys[index] is not None:
+            for i in range(self.size):
+                if self.keys[i] == key:
+                    print(f"Found {key} : {self.values[i]} with comparisons = {comparisons}")
+                comparisons += 1
+                i = (i + 1) % self.size
 
         print(f"{key} not found")
-        return comparisons
+        return
