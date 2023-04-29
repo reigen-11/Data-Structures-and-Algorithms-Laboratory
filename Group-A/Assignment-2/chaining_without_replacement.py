@@ -45,7 +45,6 @@ class HashTable:
 
     def hash_search(self, key):
         index = self.hash_function(key)
-        comparisons = 1
 
         while self.keys[index] is not None:
             if isinstance(self.keys[index], list):
@@ -53,16 +52,13 @@ class HashTable:
                 for i in range(len(self.keys[index])):
                     if self.keys[index][i] == key:
                         print(f"Found {key} with value {self.values[index][i]}")
-                        return comparisons
-                    comparisons += 1
+                        return
             elif self.keys[index] == key:
                 print(f"Found {key} with value {self.values[index]}")
-                return comparisons
-            comparisons += 1
+                return
             index = (index + 1) % self.size
 
-        print(f"{key} not found")
-        return comparisons
+        return
 
     def hash_delete(self, key):
         index = self.hash_function(key)
@@ -78,6 +74,7 @@ class HashTable:
                 print(f"{key} not found")
                 return
 
+            print(f"Deleted -[{key} : {self.values[index][value_index]}]")
             self.keys[index].pop(value_index)
             self.values[index].pop(value_index)
 
@@ -86,12 +83,14 @@ class HashTable:
                 self.values[index] = None
 
         elif self.keys[index] == key:
+            print(f"Delete {key} : {self.values[index]}")
             self.keys[index] = None
             self.values[index] = None
 
         else:
             print(f"{key} not found")
             return
+
 
 
 

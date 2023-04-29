@@ -21,8 +21,15 @@ if __name__ == "__main__":
     number = int(input("Contact_number : "))
     mob.hash_insert(name, number)
 
+
     mob.print_table()
-    print(mob.hash_search(name))
-    mob.hash_delete(name)
+
+    _name = input("\n\nAny contact you wanna search for : ")
+    mob.hash_search(_name)
+
+    __name = input("Any contact you wanna delete : ")
+    mob.hash_delete(__name)
+
     mob.print_table()
+
 
