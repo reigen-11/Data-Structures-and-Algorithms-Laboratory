@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-#include<queue>
+#include <queue>
 
 using namespace std;
 
@@ -23,30 +23,20 @@ void constructTree(Node* root) {
     cout << "Enter the number of chapters for " << root->data << ": ";
     cin >> n;
 
+    cin.ignore(); 
+
     for (int i = 0; i < n; i++) {
         string childData;
         cout << "Enter the data for Chapter " << i + 1 << " of " << root->data << ": ";
-        cin >> childData;
+        getline(cin, childData);
+        cout << endl;
 
         Node* child = new Node(childData);
         root->addChild(child);
 
-        constructTree(child); 
+        constructTree(child);
     }
 }
-
-// void printTree(Node* root) {
-//     if (root == NULL) {
-//         return;
-//     }
-
-//     cout << root->data << " ";
-
-//     for (int i = 0; i < root->children.size(); i++) {
-//         printTree(root->children[i]);
-//         // cout << "-->";
-//     }
-// }
 
 void printTree(Node* root) {
     if (root == NULL) {
@@ -72,13 +62,14 @@ void printTree(Node* root) {
 int main() {
     string rootData;
     cout << "Enter the data for the root node: ";
-    cin >> rootData;
+    getline(cin, rootData);
+    cout << endl;
 
     Node* root = new Node(rootData);
 
     constructTree(root);
 
-    cout << "The tree in pre-order traversal: ";
+    cout << "Breadth First Traversal : " << endl;
     printTree(root);
 
     return 0;
