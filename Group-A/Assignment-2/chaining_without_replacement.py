@@ -13,7 +13,9 @@ class HashTable:
         return hash_value
 
     def hash_insert(self, key, value):
+        
         index = self.hash_function(key)
+        
         if self.keys[index] is None:
             self.keys[index] = [key]
             self.values[index] = [value]
@@ -21,13 +23,11 @@ class HashTable:
         elif self.keys[index] == key:
             self.values[index] = value
 
-        elif isinstance(self.keys[index], list):
-            self.keys[index].append(key)
-            self.values[index].append(value)
-
         else:
-
-            self.keys[index], self.values[index] = [self.keys[index]], [self.values[index]]
+            if not isinstance(self.keys[index], list):
+                self.keys[index] = [self.keys[index]]
+                self.values[index] = [self.values[index]]
+        
             self.keys[index].append(key)
             self.values[index].append(value)
 
