@@ -60,6 +60,21 @@ private:
 
     }
 
+    TreeNode* swapRoles(TreeNode* root) 
+    {
+        if (root == NULL)
+            return NULL;
+
+        Node* temp = root->left;
+        root->left = root->right;
+        root->right = temp;
+
+        swapRoles(root->left);
+        swapRoles(root->right);
+
+        return root;
+    }
+
     TreeNode* searchHelper(TreeNode* node, int val)
     {
         if (node == nullptr || node->val == val)
