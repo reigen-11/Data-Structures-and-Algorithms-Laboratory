@@ -1,99 +1,90 @@
-#include<iostream>
-#include<stack>
+#include <bits/stdc++.h>
 using namespace std;
 
-class Node{
-	public:
-		char data;
-		Node *right;
-		Node *left;
-		Node(char st)
-		{
-			data=st;
-			right=left=NULL;
-		}
+struct TreeNode {
+    char data;
+    TreeNode* left;
+    TreeNode* right;
 };
-bool isOperator(char c){
-	return(c=='+'||c=='-'||c=='*'||c=='/');
-}
 
-void postor(Node *root)
-{
-	if (root==NULL)
-	{
-		return;
-	}
-	
-	stack<Node*>s;
-	stack<char>result;
-	s.push(root);
-	while(!s.empty())
-	{
-		Node *current=s.top();
-		s.pop();
-		result.push(current->data);
-		if(current->left)
-		{
-			s.push(current->left);
-		}
-		if(current->right)
-		{
-			s.push(current->right);
-		}
-	}
-	while(!result.empty())
-	{
-		cout<<result.top()<<" ";
-		result.pop();
-	}
-}
-
-Node *constexp(string exp)
-{
- 	stack<Node*>s;
- 	for (int i=exp.size();i>=0;i--)
- 	{
- 		char c=exp[i];
- 		if(isOperator(c))
- 		{
- 			Node *newNode= new Node(c);
- 			newNode->left=s.top();
- 			s.pop();
- 			newNode->right=s.top();
- 			s.pop();
- 			s.push(newNode);
-		}
-		else
-		{
-		 	Node *newNode=new Node(c);
-		 	s.push(newNode);
-		}
-	
+TreeNode* constructExpressionTree(string prefixExpression) {
+    stack<TreeNode*> stk;
+    
+    // Traverse the prefix expression in reverse order
+    for (int i = prefixExpression.length() - 1; i >= 0; i--) {
+        char ch = prefixExpression[i];
+        
+        // Create a new node for each character in the expression
+        TreeNode* newNode = new TreeNode;
+        newNode->data = ch;
+        newNode->left = newNode->right = NULL;
+        
+        // If the character is an operand, push it onto the stack
+        if (isalnum(ch)) {
+            stk.push(newNode);
+        }
+        // If the character is an operator, pop two operands from the stack
+        // and assign them as the left and right children of the operator node
+        else {
+            newNode->left = stk.top();
+            stk.pop();
+            newNode->right = stk.top();
+            stk.pop();
+            stk.push(newNode);
+        }
     }
-    return s.top();
-	 
+    
+    // The top of the stack will be the root of the expression tree
+    return stk.top();
 }
 
-void del(Node* root)
-{
- 	if(root==NULL)
- 	{
- 		return ;
-	 }
-	 del(root->left);
-	 del(root->right);
-	 delete root;
-	 
+void postOrderTraversal(TreeNode* root) {
+    if (root == NULL)
+        return;
+    
+    stack<TreeNode*> stk;
+    TreeNode* current = root;
+    TreeNode* lastVisited = NULL;
+    
+    while (!stk.empty() || current != NULL) {
+        if (current != NULL) {
+            stk.push(current);
+            current = current->left;
+        }
+        else {
+            TreeNode* topNode = stk.top();
+            
+            // If the right child exists and has not been visited yet
+            if (topNode->right != NULL && topNode->right != lastVisited) {
+                current = topNode->right;
+            }
+            else {
+                // Process the node
+                cout << topNode->data << " ";
+                stk.pop();
+                lastVisited = topNode;
+            }
+        }
+    }
 }
 
-int main()
-{
-    string str;
+void deleteTree(TreeNode* root) {
+    if (root == NULL)
+        return;
+    
+    deleteTree(root->left);
+    deleteTree(root->right);
+    delete root;
+}
 
-    cout<<"enter the string";
-    cin>>str;
+int main() {
+    string prefixExpression = "+--a*bc/def";
+    TreeNode* root = constructExpressionTree(prefixExpression);
 
-    Node *root=constexp(str);
-    cout<<"order\n";
-    postor(root);
+    cout << "Post-order traversal: ";
+    postOrderTraversal(root);
+    cout << endl;
+    deleteTree(root);
+
+    return 0;
 }
