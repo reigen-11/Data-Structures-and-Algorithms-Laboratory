@@ -59,20 +59,5 @@ class Linear_Probing:
         print(f"{key} not found")
         return
 
-linear_probing = Linear_Probing(5)
 
-# Generating 5 random keys and values
-random_keys = [''.join(random.choices(string.ascii_lowercase, k=5)) for _ in range(5)]
-random_values = [random.randint(1, 100) for _ in range(5)]
 
-# Inserting the keys and values into the hash table
-for i in range(3):
-    key = random_keys[i]
-    value = random_values[i]
-    linear_probing.hash_insert(key, value)
-
-linear_probing.hash_insert('Aditya',12345)
-linear_probing.hash_insert('Aditya',12345789)
-
-# Printing the hash table
-linear_probing.print_table()

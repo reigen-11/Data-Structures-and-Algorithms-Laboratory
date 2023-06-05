@@ -14,21 +14,13 @@ class HashTable:
         return hash_value
 
     def hash_insert(self, key, value):
+        
         index = self.hash_function(key)
+        
         if self.keys[index] is None:
             self.keys[index] = [key]
             self.values[index] = [value]
-
-        elif self.keys[index] == key:
-            self.values[index] = value
-
-        elif isinstance(self.keys[index], list):
-            self.keys[index].append(key)
-            self.values[index].append(value)
-        
         else:
-           
-            self.keys[index], self.values[index] = [self.keys[index]], [self.values[index]]
             self.keys[index].append(key)
             self.values[index].append(value)
 
@@ -51,18 +43,21 @@ class HashTable:
         while self.keys[index] is not None:
             if isinstance(self.keys[index], list):
                 # Search within a list of keys at the same index
-                for i in range(len(self.keys[index])):
-                    if self.keys[index][i] == key:
+                for i, k in enumerate(self.keys[index]):
+                    if k == key:
                         print(f"Found {key} : {self.values[index][i]} with comparisons = {comparisons}")
+                        return
 
                     comparisons += 1
             elif self.keys[index] == key:
                 print(f"Found {key} : {self.values[index]} with comparisons {comparisons}")
+                return
 
             comparisons += 1
             index = (index + 1) % self.size
 
-        return
+        print(f"{key} not found with comparisons = {comparisons}")
+
 
 
 
