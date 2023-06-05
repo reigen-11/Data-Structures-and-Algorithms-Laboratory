@@ -66,13 +66,11 @@ if __name__ == "__main__":
     
 
     for i in range(n):
+        name = input("Contact_name : ")
+        number = int(input("Contact_number : "))
+        rick.hash_insert(name, number)
 
-        rick.hash_insert(random_name, random_number)
-
-    name = input("Contact_name : ")
-    number = int(input("Contact_number : "))
-
-    rick.hash_insert(name, number)
+    
 
     print(f"Hashtable of Linear Probing :- {rick.print_table()} \n\n")
 
