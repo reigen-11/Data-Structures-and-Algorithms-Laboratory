@@ -17,7 +17,7 @@ if __name__ == "__main__":
     #     mob.hash_insert(random_name, random_number)
 
 
-    for i in range(n-1):
+    for i in range(n):
         name = input("Contact_name : ")
         number = int(input("Contact_number : "))
         mob.hash_insert(name, number)
