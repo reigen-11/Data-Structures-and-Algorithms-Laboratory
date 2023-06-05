@@ -42,7 +42,6 @@ class HashTable:
 
         while self.keys[index] is not None:
             if isinstance(self.keys[index], list):
-                # Search within a list of keys at the same index
                 for i, k in enumerate(self.keys[index]):
                     if k == key:
                         print(f"Found {key} : {self.values[index][i]} with comparisons = {comparisons}")
